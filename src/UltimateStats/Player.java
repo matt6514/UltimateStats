@@ -12,6 +12,13 @@ public class Player {
 		lastName = last;
 	}
 	
+	public Player(String s) {
+		String[] data = s.split("-");
+		number = Integer.parseInt(data[0]);
+		firstName = data[1];
+		lastName = data[2];
+	}
+	
 	public int getNumber() {
 		return number;
 	}
@@ -38,6 +45,14 @@ public class Player {
 	
 	public boolean equals(Player p) {
 		return p.getNumber() == number;
+	}
+	
+	public boolean equals(int n) {
+		return number == n;
+	}
+	
+	public String toCleanString() {
+		return firstName + " " + lastName + " (#" + number + ")";
 	}
 	
 	public String toString() {

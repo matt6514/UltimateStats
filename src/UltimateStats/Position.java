@@ -35,6 +35,10 @@ public class Position {
 		return Math.abs(y - p.getY());
 	}
 	
+	public String toCleanString() {
+		return "(" + x + "," + y + ")";
+	}
+	
 	public String toString() {
 		return x + " " + y;
 	}

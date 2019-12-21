@@ -51,4 +51,22 @@ public class Point {
 		return win;
 	}
 	
+	public String toShortString() {
+		if (!complete) throw new IllegalArgumentException("Point is not over yet");
+		
+		if (win) {
+			if (type == PointType.O) {
+				return "Darkside Holds | " + passes.get(passes.size()-1).toCleanString();
+			} else {
+				return "Darkside Breaks | " + passes.get(passes.size()-1).toCleanString();
+			}
+		} else {
+			if (type == PointType.O) {
+				return "Darkside is Broken | " + passes.get(passes.size()-1).toCleanString();
+			} else {
+				return "Opponent Hold | " + passes.get(passes.size()-1).toCleanString();
+			}
+		}
+	}
+	
 }
