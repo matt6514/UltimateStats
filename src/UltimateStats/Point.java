@@ -9,13 +9,14 @@ public class Point {
 	private PointType type;
 	private boolean complete;
 	private boolean win;
+	private boolean poss; //possesion --> true means unc disc | false means opponent disc
 	
 	public Point(PointType p) {
 		type = p;
 		if (p == PointType.D) {
-			Pass.unc();
+			poss = false;
 		} else {
-			Pass.them();
+			poss = true;
 		}
 		passes = new ArrayList<Pass>();
 		complete = false;

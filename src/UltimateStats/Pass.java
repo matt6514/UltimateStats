@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Pass {
 	
-	private static boolean unc = false;
-	
 	private Position initial;
 	private int thrower;
 	private Player p1;
@@ -18,7 +16,7 @@ public class Pass {
 	private TurnType turnType;
 	private ThrowType throwType;
 	
-	public Pass(Position i, Position f, Player t, Player c, ThrowType type, TurnType turntype, boolean g) {
+	public Pass(Position i, Position f, Player t, Player c, ThrowType type, TurnType turntype, boolean g, boolean possesion) {
 		initial = i;
 		thrower = t.getNumber();
 		p1 = t;
@@ -29,7 +27,7 @@ public class Pass {
 		turnType = turntype;
 		turn = (turnType == null);
 		goal = g;
-		us = unc;
+		us = possesion;
 	}
 	
 	public Pass(String s, List<Player> rostor) {
@@ -61,17 +59,16 @@ public class Pass {
 		
 	}
 	
-	public Pass(Position i, Position f, Player t, Player c, ThrowType type){
-		this(i,f,t,c,type,null,false);
+	public Pass(Position i, Position f, Player t, Player c, ThrowType type, boolean us) {
+		this(i,f,t,c,type,null,false, us);
 	}
 	
-	public Pass(Position i, Position f, Player t, Player c, ThrowType type, TurnType turntype){
-		this(i,f,t,c,type,turntype,false);
-		unc = !unc;
+	public Pass(Position i, Position f, Player t, Player c, ThrowType type, TurnType turntype, boolean us) {
+		this(i,f,t,c,type,turntype,false, us);
 	}
 	
-	public Pass(Position i, Position f, Player t, Player c, ThrowType type, boolean g){
-		this(i,f,t,c,type,null,true);
+	public Pass(Position i, Position f, Player t, Player c, ThrowType type, boolean g, boolean us) {
+		this(i,f,t,c,type,null,true, us);
 	}
 
 	public Position getInitial() {
@@ -116,14 +113,6 @@ public class Pass {
 
 	public void setTurn(boolean turn) {
 		this.turn = turn;
-	}
-	
-	public static void unc() {
-		unc = true;
-	}
-	
-	public static void them() {
-		unc = false;
 	}
 
 	public boolean isGoal() {
