@@ -2,7 +2,7 @@ package UltimateStats;
 
 import java.util.List;
 
-public class Pass {
+public class Pass implements PassInterface{
 	
 	private Position initial;
 	private int thrower;
@@ -71,94 +71,112 @@ public class Pass {
 		this(i,f,t,c,type,null,true, us);
 	}
 
+	@Override
 	public Position getInitial() {
 		return initial;
 	}
+	
+	@Override
+	public Position getFinal() {
+		return pfinal;
+	}
 
+	@Override
 	public void setInitial(Position initial) {
 		this.initial = initial;
 	}
+	
+	@Override
+	public void setFinal(Position pfinal) {
+		this.pfinal = pfinal;
+	}
 
+	@Override
 	public int getThrower() {
 		return thrower;
 	}
 
+	@Override
 	public void setThrower(int thrower) {
 		this.thrower = thrower;
 	}
 
-	public Position getPfinal() {
-		return pfinal;
-	}
-
-	public void setPfinal(Position pfinal) {
-		this.pfinal = pfinal;
-	}
-
+	@Override
 	public int getCatcher() {
 		return catcher;
 	}
 
+	@Override
 	public void setCatcher(int catcher) {
 		this.catcher = catcher;
 	}
 	
+	@Override
 	public boolean isUs() {
 		return us;
 	}
 
+	@Override
 	public boolean isTurn() {
 		return turn;
 	}
 
+	@Override
 	public void setTurn(boolean turn) {
 		this.turn = turn;
 	}
 
+	@Override
 	public boolean isGoal() {
 		return goal;
 	}
 
-	public void setGoal(boolean goal) {
-		this.goal = goal;
-	}
-
+	@Override
 	public TurnType getTurnType() {
 		return turnType;
 	}
 
+	@Override
 	public void setTurnType(TurnType turnType) {
 		this.turnType = turnType;
 	}
 
+	@Override
 	public ThrowType getThrowType() {
 		return throwType;
 	}
 
+	@Override
 	public void setThrowType(ThrowType throwType) {
 		this.throwType = throwType;
 	}
 	
+	@Override
 	public double getDistance() {
 		return initial.getDistance(pfinal);
 	}
 	
+	@Override
 	public double getVerticalDistance() {
 		return initial.getVerticalDistance(pfinal);
 	}
 	
+	@Override
 	public double getHorozontalDistance() {
 		return initial.getHorozontalDistance(pfinal);
 	}
 	
+	@Override
 	public boolean isReset() {
 		return getVerticalDistance() < 7.5;
 	}
 	
+	@Override
 	public boolean isHuck() {
 		return getVerticalDistance() > 30;
 	}
 	
+	@Override
 	public String toCleanString() {
 		if (!turn) {
 			if (us) {
@@ -180,6 +198,7 @@ public class Pass {
 		}
 	}
 	
+	@Override
 	public String toString() {
 		String storage = "";
 		storage += thrower + "," + catcher + "," + initial.toString() + "," + pfinal.toString() + ",";
